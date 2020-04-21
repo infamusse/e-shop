@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* api endpoints */
+app.use("/api", require("./routes/product.routes"));
 
 /* api error page */
 app.use("/api", (req, res) => {
