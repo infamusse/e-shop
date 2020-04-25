@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha tests/API/products/*.test.js",
+    "test": "mocha tests/API/**/*.test.js",
     "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
   },
   "dependencies": {
