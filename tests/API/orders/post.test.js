@@ -22,7 +22,7 @@ describe("POST /api/order", () => {
   });
 
   it("should add order and return succes", async () => {
-    const res = await require(server).post("/api/order").send(testOrder);
+    const res = await request(server).post("/api/order").send(testOrder);
     const addedOrder = await Order.find({ user: { $eq: "TEST" } });
     expext(res.status).to.be.equal(200);
     expext(res.body.message).to.be.equal("OK");
