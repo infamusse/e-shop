@@ -12,6 +12,7 @@ import { CssBaseline } from "@material-ui/core";
 import { AnimatedSwitch } from "react-router-transition";
 
 import { store } from "./redux/store";
+import { DataWrapper } from "./redux/DataWrapper";
 
 import { MainLayout } from "./components/layout/MainLayout/MainLayout";
 import { Homepage } from "./components/views/Homepage/Homepage";
@@ -38,20 +39,22 @@ const App = () => (
       <StylesProvider injectFirst>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <MainLayout>
-            <AnimatedSwitch
-              atEnter={{ opacity: 0 }}
-              atLeave={{ opacity: 0 }}
-              atActive={{ opacity: 1 }}
-              className="switchWrapper"
-            >
-              <Route exact path="/" component={Homepage} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/contact" component={Contact} />
-              <Route exact path="/post/:id/edit" component={PostEdit} />
-              <Route path="*" component={NotFound} />
-            </AnimatedSwitch>
-          </MainLayout>
+          <DataWrapper>
+            <MainLayout>
+              <AnimatedSwitch
+                atEnter={{ opacity: 0 }}
+                atLeave={{ opacity: 0 }}
+                atActive={{ opacity: 1 }}
+                className="switchWrapper"
+              >
+                <Route exact path="/" component={Homepage} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/contact" component={Contact} />
+                <Route exact path="/post/:id/edit" component={PostEdit} />
+                <Route path="*" component={NotFound} />
+              </AnimatedSwitch>
+            </MainLayout>
+          </DataWrapper>
         </ThemeProvider>
       </StylesProvider>
     </BrowserRouter>

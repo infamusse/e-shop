@@ -1,5 +1,5 @@
 export const initialState = {
-  posts: {
+  products: {
     data: {},
     loading: {
       active: false,
