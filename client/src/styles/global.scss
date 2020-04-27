@@ -1,0 +1,17 @@
+@import "settings.scss";
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+.switchWrapper {
+  position: relative;
+  transition: 0.4s;
+
+  > :first-child ~ * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: 0.4s;
+  }
+}
