@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -10,9 +10,6 @@ import styles from "./ArrowBack.module.scss";
 const ArrowBack = () => {
   const { pathname } = useLocation();
   const history = useHistory();
-  useEffect(() => {
-    console.log("location", pathname);
-  }, [pathname]);
 
   const backToHome = () => history.goBack();
 

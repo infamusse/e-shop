@@ -5,12 +5,9 @@ import clsx from "clsx";
 
 import { Container } from "@material-ui/core";
 
-import { connect } from "react-redux";
-import { getAllProducts, getLoadingState } from "../../../redux/productsRedux";
-
 import styles from "./Homepage.module.scss";
 
-const Component = ({ className, children }) => (
+const Homepage = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
     <Container className={styles.homePageContainer}>
       <div className={styles.homePageMainTextContainer}>
@@ -24,20 +21,9 @@ const Component = ({ className, children }) => (
   </div>
 );
 
-Component.propTypes = {
+Homepage.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
 };
 
-const mapStateToProps = (state) => ({
-  products: getAllProducts(state),
-  loading: getLoadingState(state),
-});
-
-const HomepageContainer = connect(mapStateToProps, null)(Component);
-
-export {
-  // Component as Homepage,
-  HomepageContainer as Homepage,
-  Component as HomepageComponent,
-};
+export { Homepage };

@@ -37,3 +37,9 @@
     color: #c2ffff;
   }
 }
+
+@media (max-width: 1000px) {
+  .arrowBackContainer {
+    left: 30px;
+  }
+}

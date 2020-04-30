@@ -3,35 +3,58 @@ import PropTypes from "prop-types";
 
 import clsx from "clsx";
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { Container } from "@material-ui/core";
+
+import { connect } from "react-redux";
+import { getAllProducts, getLoadingState } from "../../../redux/productsRedux";
 
 import styles from "./Products.module.scss";
 
-const Component = ({ className, children }) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>Products</h2>
-    {children}
-  </div>
-);
+import ProductCart from "../../features/ProcuctCart/ProductCart";
 
-Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+const Products = ({
+  className,
+  children,
+  products,
+  loading: { active, error },
+}) => {
+  console.log("products", products);
+
+  return (
+    <div className={clsx(className, styles.root)}>
+      <Container className={styles.productsContainer}>
+        {active || !products.length ? (
+          <h2>Loading</h2>
+        ) : (
+          products.map((product) => (
+            <ProductCart
+              className={styles.productsProductCart}
+              key={product._id}
+              product={product}
+            />
+          ))
+        )}
+      </Container>
+      {children}
+    </div>
+  );
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
+Products.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  products: PropTypes.array,
+};
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapStateToProps = (state) => ({
+  products: getAllProducts(state),
+  loading: getLoadingState(state),
+});
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const ProductsContainer = connect(mapStateToProps, null)(Products);
 
 export {
-  Component as Products,
-  // Container as Products,
-  Component as ProductsComponent,
+  // Component as Products,
+  ProductsContainer as Products,
+  Products as ProductsComponent,
 };
