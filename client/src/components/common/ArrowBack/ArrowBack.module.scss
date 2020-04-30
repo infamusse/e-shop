@@ -1,0 +1,39 @@
+.arrowBackContainer {
+  position: fixed;
+  left: 80px;
+  top: 150px;
+  cursor: pointer;
+  z-index: 99;
+  * {
+    font-size: 60px;
+  }
+}
+
+.arrowBackFront,
+.arrowBackBehind {
+  transition: 0.4s;
+}
+
+.arrowBackFront {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-10%, -8%);
+  color: #84fab0;
+}
+
+.arrowBackBehind {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(10%, 8%);
+  color: #8fd3f4;
+}
+
+.arrowBackContainer:hover {
+  .arrowBackFront,
+  .arrowBackBehind {
+    transform: none;
+    color: #c2ffff;
+  }
+}

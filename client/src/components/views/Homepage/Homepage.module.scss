@@ -1,4 +1,57 @@
-@import '../../../styles/settings.scss';
+@import "../../../styles/settings.scss";
 
-// .root {
-// }
+.root {
+  margin-bottom: 50px;
+  height: 100%;
+}
+
+.homePageContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.homePageMainTextContainer {
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  .homePageMainText {
+    font-family: "BioRhyme", serif;
+    font-size: 54px;
+  }
+}
+
+.homePageMainPhoto {
+  width: 400px;
+  height: 600px;
+  transform: translateX(-20%);
+  background-position: center;
+  background-size: cover;
+  background-origin: content-box;
+  background-image: url("https://images.pexels.com/photos/1181672/pexels-photo-1181672.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+}
+
+@media (max-width: 900px) {
+  .homePageContainer {
+    min-height: 80vh;
+  }
+
+  .homePageMainTextContainer {
+    max-width: 300px;
+    transform: translateY(-10%);
+  }
+
+  .homePageMainPhoto {
+    width: 300px;
+    height: 500px;
+    transform: translate(-10%, 40%);
+  }
+}
+
+@media (max-width: 600px) {
+  .homePageMainTextContainer {
+    max-width: 80%;
+  }
+  .homePageMainPhoto {
+    display: none;
+  }
+}

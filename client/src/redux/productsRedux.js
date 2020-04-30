@@ -1,7 +1,8 @@
 import axios from "axios";
 
 /* selectors */
-export const getAll = ({ products }) => products.data;
+export const getAllProducts = ({ products }) => products.data;
+export const getLoadingState = ({ products }) => products.loading;
 
 /* action name creator */
 const reducerName = "products";

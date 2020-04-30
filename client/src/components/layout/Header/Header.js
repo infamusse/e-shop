@@ -18,9 +18,9 @@ const Component = ({ className, children }) => (
         className={clsx(styles.underlineEffect, styles.navLink)}
         color="inherit"
         exact
-        to={`${process.env.PUBLIC_URL}/`}
+        to={`${process.env.PUBLIC_URL}/products`}
       >
-        Home
+        Products
       </NavLink>
       <NavLink
         className={clsx(styles.underlineEffect, styles.navLink)}

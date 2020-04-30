@@ -2,10 +2,14 @@
 
 body {
   font-family: "Nunito", sans-serif;
+  position: relative;
+  height: 100%;
 }
+
 .switchWrapper {
   position: relative;
   transition: 0.4s;
+  height: 100%;
 
   > :first-child ~ * {
     position: absolute;

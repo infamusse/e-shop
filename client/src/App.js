@@ -17,7 +17,7 @@ import { DataWrapper } from "./redux/DataWrapper";
 import { MainLayout } from "./components/layout/MainLayout/MainLayout";
 import { Homepage } from "./components/views/Homepage/Homepage";
 import { Contact } from "./components/views/Contact/Contact";
-import { PostEdit } from "./components/views/PostEdit/PostEdit";
+import { Products } from "./components/views/Products/Products";
 import { About } from "./components/views/About/About";
 import { NotFound } from "./components/views/NotFound/NotFound";
 
@@ -48,9 +48,9 @@ const App = () => (
                 className="switchWrapper"
               >
                 <Route exact path="/" component={Homepage} />
+                <Route exact path="/products" component={Products} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact" component={Contact} />
-                <Route exact path="/post/:id/edit" component={PostEdit} />
                 <Route path="*" component={NotFound} />
               </AnimatedSwitch>
             </MainLayout>

@@ -4,6 +4,7 @@
   display: flex;
   align-items: flex-end;
   height: 100px;
+  width: 100vw;
 }
 
 .navLink {
@@ -23,5 +24,12 @@
   transition: background-size 0.25s ease-in;
   &:hover {
     background-size: 100% 88%;
+  }
+}
+
+@media (max-width: 800px) {
+  .root {
+    height: 50px;
+    justify-content: center;
   }
 }

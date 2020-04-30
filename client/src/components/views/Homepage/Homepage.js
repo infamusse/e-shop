@@ -1,16 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import clsx from 'clsx';
+import clsx from "clsx";
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { Container } from "@material-ui/core";
 
-import styles from './Homepage.module.scss';
+import { connect } from "react-redux";
+import { getAllProducts, getLoadingState } from "../../../redux/productsRedux";
 
-const Component = ({className, children}) => (
+import styles from "./Homepage.module.scss";
+
+const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
-    <h2>Homepage</h2>
+    <Container className={styles.homePageContainer}>
+      <div className={styles.homePageMainTextContainer}>
+        <p className={styles.homePageMainText}>
+          We believe in real <b>paper</b> feeling
+        </p>
+      </div>
+      <div className={styles.homePageMainPhoto}></div>
+    </Container>
     {children}
   </div>
 );
@@ -20,18 +29,15 @@ Component.propTypes = {
   className: PropTypes.string,
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
+const mapStateToProps = (state) => ({
+  products: getAllProducts(state),
+  loading: getLoadingState(state),
+});
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const HomepageContainer = connect(mapStateToProps, null)(Component);
 
 export {
-  Component as Homepage,
-  // Container as Homepage,
+  // Component as Homepage,
+  HomepageContainer as Homepage,
   Component as HomepageComponent,
 };

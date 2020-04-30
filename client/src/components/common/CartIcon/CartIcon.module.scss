@@ -2,6 +2,7 @@
   position: fixed;
   bottom: 100px;
   right: 100px;
+  z-index: 99;
 }
 
 .hoverEffect {
@@ -12,5 +13,12 @@
   transition: background-size 0.25s ease-in;
   &:hover {
     background-size: 100% 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .root {
+    bottom: 80px;
+    right: 30px;
   }
 }
