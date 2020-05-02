@@ -2,6 +2,7 @@ import axios from "axios";
 
 /* selectors */
 export const getAllProducts = ({ products }) => products.data;
+export const getOneProducts = ({ products }) => products.choosenOne;
 export const getLoadingState = ({ products }) => products.loading;
 
 /* action name creator */
@@ -11,11 +12,16 @@ const createActionName = (name) => `app/${reducerName}/${name}`;
 /* action types */
 const FETCH_START = createActionName("FETCH_START");
 const FETCH_SUCCESS = createActionName("FETCH_SUCCESS");
+const FETCH_SUCCESS_ONE = createActionName("FETCH_SUCCESS_ONE");
 const FETCH_ERROR = createActionName("FETCH_ERROR");
 
 /* action creators */
 export const fetchStarted = (payload) => ({ payload, type: FETCH_START });
 export const fetchSuccess = (payload) => ({ payload, type: FETCH_SUCCESS });
+export const fetchSuccessOneProduct = (payload) => ({
+  payload,
+  type: FETCH_SUCCESS_ONE,
+});
 export const fetchError = (payload) => ({ payload, type: FETCH_ERROR });
 
 /* thunk creators */
@@ -28,6 +34,19 @@ export const fetchProductsFromAPI = () => {
       .then((response) => {
         const products = response.data;
         dispatch(fetchSuccess(products));
+      })
+      .catch((error) => fetchError(error.message));
+  };
+};
+
+export const fetchOneProductFromAPI = (id) => {
+  return function (dispatch) {
+    dispatch(fetchStarted());
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/product/${id}`)
+      .then((response) => {
+        const product = response.data;
+        dispatch(fetchSuccessOneProduct(product));
       })
       .catch((error) => fetchError(error.message));
   };
@@ -53,6 +72,16 @@ export const reducer = (statePart = [], action = {}) => {
           error: false,
         },
         data: action.payload,
+      };
+    }
+    case FETCH_SUCCESS_ONE: {
+      return {
+        ...statePart,
+        loading: {
+          active: false,
+          error: false,
+        },
+        choosenOne: action.payload,
       };
     }
     case FETCH_ERROR: {

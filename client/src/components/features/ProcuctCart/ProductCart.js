@@ -8,7 +8,7 @@ import styles from "./ProductCart.module.scss";
 const ProductCart = ({ product }) => {
   const { _id, title, author, mainPhoto } = product;
   return (
-    <Link to={`${process.env.PUBLIC_URL}/${_id}`}>
+    <Link to={`${process.env.PUBLIC_URL}/product/${_id}`}>
       <div className={styles.productCart}>
         <img src={mainPhoto} alt={title} className={styles.productCartPhoto} />
         <div className={styles.productCartTextWrapper}>

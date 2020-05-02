@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import clsx from "clsx";
 
-import { Container } from "@material-ui/core";
+import { Container, LinearProgress } from "@material-ui/core";
 
 import { connect } from "react-redux";
 import { getAllProducts, getLoadingState } from "../../../redux/productsRedux";
@@ -18,13 +18,11 @@ const Products = ({
   products,
   loading: { active, error },
 }) => {
-  console.log("products", products);
-
   return (
     <div className={clsx(className, styles.root)}>
       <Container className={styles.productsContainer}>
         {active || !products.length ? (
-          <h2>Loading</h2>
+          <LinearProgress />
         ) : (
           products.map((product) => (
             <ProductCart

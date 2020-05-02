@@ -18,6 +18,7 @@ import { MainLayout } from "./components/layout/MainLayout/MainLayout";
 import { Homepage } from "./components/views/Homepage/Homepage";
 import { Contact } from "./components/views/Contact/Contact";
 import { Products } from "./components/views/Products/Products";
+import { ProductView } from "./components/views/ProductView/ProductView";
 import { About } from "./components/views/About/About";
 import { NotFound } from "./components/views/NotFound/NotFound";
 
@@ -26,7 +27,7 @@ import "./styles/global.scss";
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: "#2B4C6F" },
+    primary: { main: "#c2ffff" },
     typography: {
       fontFamily: "Nunito, Arial",
     },
@@ -49,6 +50,7 @@ const App = () => (
               >
                 <Route exact path="/" component={Homepage} />
                 <Route exact path="/products" component={Products} />
+                <Route exact path="/product/:id" component={ProductView} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact" component={Contact} />
                 <Route path="*" component={NotFound} />
