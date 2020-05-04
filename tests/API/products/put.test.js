@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 const request = chai.request;
 
-describe("GET /api/product", () => {
+describe("PUT /api/product/:id", () => {
   beforeEach(async () => {
     const testProduct = new Product({
       _id: "5d9f1140f10a81216cfd4408",
@@ -26,23 +26,23 @@ describe("GET /api/product", () => {
     deleteProduct.remove();
   });
 
-  it("/ should return all products", async () => {
-    const res = await request(server).get("/api/product");
-    expect(res.status).to.be.equal(200);
-    expect(res.body).to.be.an("array");
-  });
+  const changedTestProduct = {
+    _id: "5d9f1140f10a81216cfd4408",
+    title: "TEST",
+    author: "some author",
+    price: 999,
+    cover: "soft",
+    mainPhoto: "photolink.com",
+  };
 
-  it("/ should return choosen product by ID", async () => {
-    const res = await request(server).get(
-      "/api/product/5d9f1140f10a81216cfd4408"
-    );
+  it("shoud change attributes in choosen post", async () => {
+    const res = await request(server)
+      .put("/api/product/5d9f1140f10a81216cfd4408")
+      .send(changedTestProduct);
+    const resChangedPost = await Product.findById("5d9f1140f10a81216cfd4408");
     expect(res.status).to.be.equal(200);
-    expect(res.body).to.be.an("object");
-    expect(res.body.title).to.be.equal("TEST");
-  });
-
-  it("/ should status 500 if product not match", async () => {
-    const res = await request(server).get("/api/product/123");
-    expect(res.status).to.be.equal(500);
+    expect(res.body.message).to.be.equal("OK");
+    expect(resChangedPost.price).to.be.equal(999);
+    expect(resChangedPost.cover).to.be.equal("soft");
   });
 });

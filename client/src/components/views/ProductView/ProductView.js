@@ -10,6 +10,8 @@ import {
   getOneProducts,
 } from "../../../redux/productsRedux";
 
+import GalleryCart from "../../features/GalleryCart/GalleryCart";
+
 import styles from "./ProductView.module.scss";
 
 const ProductView = ({
@@ -54,6 +56,11 @@ const ProductView = ({
               <img src={product.mainPhoto} alt={product.title} />
             </div>
           </Grid>
+          {product.morePhoto && (
+            <Grid className={styles.productGalleryCarts}>
+              <GalleryCart />
+            </Grid>
+          )}
         </Grid>
       </Container>
     );

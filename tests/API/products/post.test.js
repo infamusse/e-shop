@@ -11,10 +11,9 @@ const request = chai.request;
 describe("POST /api/product", () => {
   const testProduct = {
     title: "TEST",
-    text: "Desc of super product",
+    author: "some author",
     price: 666,
     cover: "hard",
-    color: "blue",
     mainPhoto: "photolink.com",
   };
 
