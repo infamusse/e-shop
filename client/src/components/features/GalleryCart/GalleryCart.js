@@ -1,8 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GalleryCart = () => {
-  return <p>Gallery Cart</p>;
+import styles from "./GalleryCart.module.scss";
+
+const GalleryCart = ({ src }) => {
+  if (src) {
+    return (
+      <div className={styles.galleryCart}>
+        <img src={src} className={styles.galleryCartPhoto} />
+      </div>
+    );
+  } else return null;
+};
+
+GalleryCart.propTypes = {
+  src: PropTypes.string,
 };
 
 export default GalleryCart;

@@ -11,6 +11,7 @@ import {
 } from "../../../redux/productsRedux";
 
 import GalleryCart from "../../features/GalleryCart/GalleryCart";
+import AddToCard from "../../common/AddToCard/AddToCard";
 
 import styles from "./ProductView.module.scss";
 
@@ -29,7 +30,7 @@ const ProductView = ({
     return (
       <Container className={styles.productContainer}>
         <Grid className={styles.productMainRow} container>
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12} md={6}>
             <h1 className={styles.productTitle}>{product.title}</h1>
             <h2 className={styles.productAuhtor}>{product.author}</h2>
             <Grid className={styles.productAddInfoRow} container spacing={3}>
@@ -50,17 +51,22 @@ const ProductView = ({
                 </p>
               </Grid>
             </Grid>
+            {product.morePhoto && (
+              <Grid className={styles.productGalleryCarts}>
+                {product.morePhoto.map((photo, index) => (
+                  <GalleryCart key={index} src={photo} />
+                ))}
+              </Grid>
+            )}
+          </Grid>
+          <Grid xs={12} md={2}>
+            <AddToCard />
           </Grid>
           <Grid className={styles.productMainPhotoRow} item xs={12} md={4}>
             <div className={styles.productMainPhoto}>
               <img src={product.mainPhoto} alt={product.title} />
             </div>
           </Grid>
-          {product.morePhoto && (
-            <Grid className={styles.productGalleryCarts}>
-              <GalleryCart />
-            </Grid>
-          )}
         </Grid>
       </Container>
     );
