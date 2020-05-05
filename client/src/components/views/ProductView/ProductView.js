@@ -11,7 +11,7 @@ import {
 } from "../../../redux/productsRedux";
 
 import GalleryCart from "../../features/GalleryCart/GalleryCart";
-import AddToCard from "../../common/AddToCard/AddToCard";
+import { AddToCard } from "../../common/AddToCard/AddToCard";
 
 import styles from "./ProductView.module.scss";
 
@@ -60,7 +60,7 @@ const ProductView = ({
             )}
           </Grid>
           <Grid xs={12} md={2}>
-            <AddToCard />
+            <AddToCard product={product} />
           </Grid>
           <Grid className={styles.productMainPhotoRow} item xs={12} md={4}>
             <div className={styles.productMainPhoto}>

@@ -7,4 +7,8 @@ export const initialState = {
       error: false,
     },
   },
+  order: {
+    products: [],
+    sumPrice: 0,
+  },
 };
