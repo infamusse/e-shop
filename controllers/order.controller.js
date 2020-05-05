@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 exports.getAll = async (req, res) => {
   try {
-    res.json(await Order.find().populate("products"));
+    res.json(await Order.find().populate("products", "_id price"));
   } catch (err) {
     res.status(500).json({ message: err });
   }
