@@ -1,3 +1,12 @@
 .deleteIconButton {
   color: white;
 }
+
+.CartProductContainer {
+  padding: 10px;
+}
+.CartProductContainer:hover {
+  svg {
+    color: red;
+  }
+}

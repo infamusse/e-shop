@@ -17,19 +17,21 @@ const CartProductComponent = ({ product, removeProduct }) => {
     removeProduct(id);
   };
 
+  const stripStringAddDots = (string, chars) => {
+    return `${string.slice(0, chars)}...`;
+  };
+
   return (
-    <Container>
-      <Grid container spacing={2} justify="center" alignItems="center">
-        <Grid item>{title}</Grid>
-        <Grid item>{count}</Grid>
-        <IconButton
-          onClick={() => removeFromCart(id)}
-          className={styles.deleteIconButton}
-        >
-          <DeleteOutlineIcon />
-        </IconButton>
-      </Grid>
-    </Container>
+    <Grid container spacing={2} justify="space-around" alignItems="center">
+      <Grid item>{stripStringAddDots(title, 15)}</Grid>
+      <Grid item>{count}</Grid>
+      <IconButton
+        onClick={() => removeFromCart(id)}
+        className={styles.deleteIconButton}
+      >
+        <DeleteOutlineIcon />
+      </IconButton>
+    </Grid>
   );
 };
 
