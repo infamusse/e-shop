@@ -3,8 +3,6 @@ import { useLocation, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-import clsx from "clsx";
-
 import styles from "./ArrowBack.module.scss";
 
 const ArrowBack = () => {

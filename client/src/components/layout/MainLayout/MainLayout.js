@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import { Header } from "../Header/Header";
 import Footer from "../Footer/Footer";
-import CartIcon from "../../common/CartIcon/CartIcon";
+import { CartIcon } from "../../common/CartIcon/CartIcon";
 import ArrowBack from "../../common/ArrowBack/ArrowBack";
 
 import { connect } from "react-redux";

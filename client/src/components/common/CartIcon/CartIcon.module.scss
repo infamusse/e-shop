@@ -16,6 +16,33 @@
   }
 }
 
+.CartNotifaction {
+  visibility: hidden;
+  position: fixed;
+  bottom: 140px;
+  right: 100px;
+  background-color: #c85315;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  color: white;
+  z-index: 100;
+  p {
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+.showCartNotifaction {
+  visibility: visible;
+}
+
+.active {
+  background-size: 100% 100%;
+}
+
 @media (max-width: 800px) {
   .root {
     bottom: 80px;

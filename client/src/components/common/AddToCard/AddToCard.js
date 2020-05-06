@@ -10,12 +10,16 @@ import { addProduct } from "../../../redux/orderRedux";
 import styles from "./AddToCart.module.scss";
 
 const AddToCartComponent = ({ product, addProduct }) => {
-  const [count, setCount] = useState(0);
-  const { _id, price } = product;
+  const [count, setCount] = useState(1);
+  const { _id, price, title } = product;
 
   const addToCart = () => {
-    console.log("ADDTOCART", _id, price, count);
-    const product = { id: _id, price: price, count: parseInt(count) };
+    const product = {
+      id: _id,
+      price: price,
+      count: parseInt(count),
+      title: title,
+    };
     addProduct(product);
   };
 
@@ -27,7 +31,7 @@ const AddToCartComponent = ({ product, addProduct }) => {
       <TextField
         className={styles.inputAmount}
         placeholder="Enter quantity"
-        defaultValue="1"
+        value={count}
         InputProps={{ inputProps: { min: 1, max: 9 } }}
         onChange={(e) => setCount(e.target.value)}
         type="number"
