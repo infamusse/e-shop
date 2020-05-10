@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   TextField,
@@ -9,9 +9,30 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 
-const DialogForm = ({ open }) => {
-  const handleClose = () => (open = false);
+import styles from "./DialogForm.module.scss";
 
+const DialogForm = ({
+  open,
+  products,
+  handleClose,
+  handleConfirm,
+  sumPrice,
+}) => {
+  const [order, createOrder] = useState({});
+
+  const handleEvent = (event) => {
+    createOrder({ ...order, [event.target.name]: event.target.value });
+  };
+
+  const handleOrderInfo = (event) => {
+    createOrder({
+      ...order,
+      orderInfo: {
+        ...order.orderInfo,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
   return (
     <div>
       <Dialog
@@ -19,27 +40,69 @@ const DialogForm = ({ open }) => {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Order form</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            <ul>
+              {products.map((product) => (
+                <li>
+                  {product.title} count: {product.count}, price: {product.price}
+                </li>
+              ))}
+            </ul>
           </DialogContentText>
           <TextField
             autoFocus
+            className={styles.orderInput}
+            autoComplete="off"
             margin="dense"
+            color="secondary"
             id="name"
-            label="Email Address"
-            type="email"
+            place="Your name"
+            label="Name"
+            name="user"
             fullWidth
+            onChange={handleEvent}
+          />
+          <TextField
+            className={styles.orderInput}
+            color="secondary"
+            placeholder="Your phone number"
+            label="Phone"
+            name="phone"
+            type="number"
+            onChange={handleOrderInfo}
+          />
+          <TextField
+            className={styles.orderInput}
+            color="secondary"
+            label="Adress"
+            name="adress"
+            placeholder="Delivery adress"
+            onChange={handleOrderInfo}
+          />
+          <TextField
+            className={styles.orderInput}
+            color="secondary"
+            label="Info"
+            multiline
+            placeholder="Info about products"
+            name="message"
+            fullWidth
+            rowsMax="4"
+            onChange={handleEvent}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} variant="contained" color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
+          <Button
+            onClick={() => handleConfirm(order)}
+            variant="contained"
+            color="secondary"
+          >
+            Order
           </Button>
         </DialogActions>
       </Dialog>

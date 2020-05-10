@@ -20,6 +20,7 @@ export const clearOrder = (payload) => ({ payload, type: CLEAR_ORDER });
 
 /* thunk creators */
 export const sendOrder = (order) => {
+  console.log("dispatch", order);
   return (dispatch) =>
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/order`, { ...order })
@@ -38,11 +39,29 @@ export const reducer = (statePart = [], action = {}) => {
         Math.round(
           (action.payload.price * action.payload.count + Number.EPSILON) * 100
         ) / 100;
-      return {
-        ...statePart,
-        products: [...statePart.products, action.payload],
-        sumPrice: (statePart.sumPrice += addingPrice),
-      };
+      const product = statePart.products.find(
+        ({ id }) => id === action.payload.id
+      );
+      console.log("product", product);
+      if (!product)
+        return {
+          ...statePart,
+          products: [...statePart.products, action.payload],
+          sumPrice: (statePart.sumPrice += addingPrice),
+        };
+      else {
+        let addingProduct = product;
+        addingProduct.count += action.payload.count;
+        console.log("addingProduct", addingProduct);
+        return {
+          ...statePart,
+          products: [
+            ...statePart.products.filter(({ id }) => id !== action.payload.id),
+            addingProduct,
+          ],
+          sumPrice: (statePart.sumPrice += addingPrice),
+        };
+      }
     }
     case REMOVE_PRODUCT: {
       const product = statePart.products.find(

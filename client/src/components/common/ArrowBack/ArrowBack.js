@@ -14,7 +14,7 @@ const ArrowBack = () => {
   if (pathname != "/") {
     return (
       <div
-        title="Back to home"
+        title="Back"
         onClick={backToHome}
         className={styles.arrowBackContainer}
       >

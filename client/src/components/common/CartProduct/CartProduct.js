@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { Container, Grid, IconButton } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
@@ -22,8 +23,19 @@ const CartProductComponent = ({ product, removeProduct }) => {
   };
 
   return (
-    <Grid container spacing={2} justify="space-around" alignItems="center">
-      <Grid item>{stripStringAddDots(title, 15)}</Grid>
+    <Grid
+      container
+      className={styles.CartProductContainer}
+      spacing={2}
+      justify="space-between"
+      alignItems="center"
+    >
+      <Link
+        className={styles.cartProductLink}
+        to={`${process.env.PUBLIC_URL}/product/${id}`}
+      >
+        <Grid item>{stripStringAddDots(title, 15)}</Grid>
+      </Link>
       <Grid item>{count}</Grid>
       <IconButton
         onClick={() => removeFromCart(id)}

@@ -33,6 +33,7 @@ const CartIcon = ({ products }) => {
       </div>
       <Fab
         onClick={handleShowCart}
+        title="Cart"
         className={clsx(
           styles.root,
           styles.hoverEffect,

@@ -31,6 +31,7 @@ const AddToCartComponent = ({ product, addProduct }) => {
       <TextField
         className={styles.inputAmount}
         placeholder="Enter quantity"
+        color="secondary"
         value={count}
         InputProps={{ inputProps: { min: 1, max: 9 } }}
         onChange={(e) => setCount(e.target.value)}

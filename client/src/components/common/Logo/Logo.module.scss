@@ -1,0 +1,42 @@
+.logoContainer {
+  display: block;
+  height: 100%;
+  width: 150px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+
+  .logoTextContainer {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    * {
+      display: block;
+      text-align: center;
+      margin: auto;
+    }
+
+    .logoFirstLine,
+    .logoSecondLine {
+      transition: 0.4s;
+    }
+
+    .logoFirstLine {
+      transform: translateX(-8%);
+      color: #84fab0;
+    }
+    .logoSecondLine {
+      transform: translateX(8%);
+      color: #8fd3f4;
+    }
+  }
+
+  .logoTextContainer:hover {
+    .logoFirstLine,
+    .logoSecondLine {
+      transform: none;
+      color: #c2ffff;
+    }
+  }
+}

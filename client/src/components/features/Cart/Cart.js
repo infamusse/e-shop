@@ -14,15 +14,33 @@ import {
   removeProduct,
   getOrderProducts,
   getSumPrice,
+  sendOrder,
 } from "../../../redux/orderRedux";
 
 import styles from "./Cart.module.scss";
 
-const CartComponent = ({ products, sumPrice }) => {
+const CartComponent = ({ products, sumPrice, sendOrder }) => {
   const [form, setOpenForm] = useState(false);
 
   const handleOpenForm = () => {
     setOpenForm(true);
+  };
+
+  const handleClose = () => {
+    setOpenForm(false);
+  };
+  const handleConfirm = (order) => {
+    handleSendOrder(order);
+  };
+
+  const handleSendOrder = (order) => {
+    const sendingOrder = {
+      products: products.map(({ id }) => id),
+      ...order,
+    };
+    sendOrder(sendingOrder).then(() => {
+      console.log("send post");
+    });
   };
 
   return (
@@ -46,13 +64,24 @@ const CartComponent = ({ products, sumPrice }) => {
           </p>
         </Grid>
         <Grid item>
-          <Button onClick={handleOpenForm} variant="contained" color="primary">
+          <Button
+            onClick={handleOpenForm}
+            variant="contained"
+            disabled={!sumPrice || !products.length}
+            color="primary"
+          >
             order
           </Button>
         </Grid>
       </Grid>
 
-      <DialogForm open={form} />
+      <DialogForm
+        open={form}
+        handleClose={handleClose}
+        handleConfirm={handleConfirm}
+        products={products}
+        sumPrice={sumPrice}
+      />
     </div>
   );
 };
@@ -70,6 +99,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addProduct: (product) => dispatch(addProduct(product)),
   removeProduct: (id) => dispatch(removeProduct(id)),
+  sendOrder: (order) => dispatch(sendOrder(order)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(CartComponent);

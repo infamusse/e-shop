@@ -6,6 +6,8 @@ import clsx from "clsx";
 
 import { Container } from "@material-ui/core";
 
+import Logo from "../../common/Logo/Logo";
+
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
@@ -13,11 +15,13 @@ import styles from "./Header.module.scss";
 
 const Component = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
+    <Logo />
     <Container>
       <NavLink
         className={clsx(styles.underlineEffect, styles.navLink)}
         color="inherit"
         exact
+        title="Products"
         to={`${process.env.PUBLIC_URL}/products`}
       >
         Products
@@ -26,6 +30,7 @@ const Component = ({ className, children }) => (
         className={clsx(styles.underlineEffect, styles.navLink)}
         color="inherit"
         exact
+        title="About"
         to={`${process.env.PUBLIC_URL}/about`}
       >
         About
@@ -34,6 +39,7 @@ const Component = ({ className, children }) => (
         className={clsx(styles.underlineEffect, styles.navLink)}
         color="inherit"
         exact
+        title="Contact"
         to={`${process.env.PUBLIC_URL}/contact`}
       >
         Contact

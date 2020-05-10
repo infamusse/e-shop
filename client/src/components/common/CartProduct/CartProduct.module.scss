@@ -5,8 +5,22 @@
 .CartProductContainer {
   padding: 10px;
 }
-.CartProductContainer:hover {
+.CartProductContainer {
   svg {
-    color: red;
+    transition: 0.2s;
   }
+  svg:hover {
+    transition: 0.2s;
+    color: #c85315;
+  }
+}
+
+.cartProductLink {
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+
+.cartProductLink:hover {
+  text-decoration: underline;
 }

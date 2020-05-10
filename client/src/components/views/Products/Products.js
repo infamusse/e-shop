@@ -26,6 +26,7 @@ const Products = ({
         ) : (
           products.map((product) => (
             <ProductCart
+              title={product.title}
               className={styles.productsProductCart}
               key={product._id}
               product={product}

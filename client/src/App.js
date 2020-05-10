@@ -28,9 +28,10 @@ import "./styles/global.scss";
 const theme = createMuiTheme({
   palette: {
     primary: { main: "#c2ffff" },
-    typography: {
-      fontFamily: "Nunito, Arial",
-    },
+    secondary: { main: "#324b4b" },
+  },
+  typography: {
+    fontFamily: "Nunito, Arial",
   },
 });
 
