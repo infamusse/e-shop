@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use("/api", (req, res) => {
 });
 
 /* mongoose */
-mongoose.connect("mongodb://localhost:27017/eshop", {
+mongoose.connect(process.env.DB_CONNECT, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

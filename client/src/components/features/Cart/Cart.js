@@ -30,6 +30,7 @@ const CartComponent = ({ products, sumPrice, sendOrder }) => {
     setOpenForm(false);
   };
   const handleConfirm = (order) => {
+    console.log("handleConfirm", order);
     handleSendOrder(order);
   };
 

@@ -42,7 +42,6 @@ export const reducer = (statePart = [], action = {}) => {
       const product = statePart.products.find(
         ({ id }) => id === action.payload.id
       );
-      console.log("product", product);
       if (!product)
         return {
           ...statePart,
@@ -52,7 +51,6 @@ export const reducer = (statePart = [], action = {}) => {
       else {
         let addingProduct = product;
         addingProduct.count += action.payload.count;
-        console.log("addingProduct", addingProduct);
         return {
           ...statePart,
           products: [
