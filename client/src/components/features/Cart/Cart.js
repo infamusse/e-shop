@@ -9,6 +9,8 @@ import clsx from "clsx";
 import { CartProduct } from "../../common/CartProduct/CartProduct";
 import { DialogForm } from "../../features/DialogForm/DialogForm";
 
+import { snackbarSuccess, snackbarError } from "../../../redux/snackbarRedux";
+
 import {
   addProduct,
   removeProduct,
@@ -19,16 +21,18 @@ import {
 
 import styles from "./Cart.module.scss";
 
-const CartComponent = ({ products, sumPrice, sendOrder }) => {
+const CartComponent = ({ products, sumPrice, sendOrder, snackbarSuccess }) => {
   const [form, setOpenForm] = useState(false);
 
   const handleOpenForm = () => {
     setOpenForm(true);
+    snackbarSuccess("Order success");
   };
 
   const handleClose = () => {
     setOpenForm(false);
   };
+
   const handleConfirm = (order) => {
     console.log("handleConfirm", order);
     handleSendOrder(order);
@@ -40,7 +44,8 @@ const CartComponent = ({ products, sumPrice, sendOrder }) => {
       ...order,
     };
     sendOrder(sendingOrder).then(() => {
-      console.log("send post");
+      handleClose();
+      snackbarSuccess("Order success");
     });
   };
 
@@ -101,6 +106,7 @@ const mapDispatchToProps = (dispatch) => ({
   addProduct: (product) => dispatch(addProduct(product)),
   removeProduct: (id) => dispatch(removeProduct(id)),
   sendOrder: (order) => dispatch(sendOrder(order)),
+  snackbarSuccess: (text) => dispatch(snackbarSuccess(text)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(CartComponent);

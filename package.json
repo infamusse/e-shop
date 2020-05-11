@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js",
-    "start:all": "run-p start:*",
+    "start:all": "run-p start:server start:client",
     "start:server": "nodemon server.js",
     "start:client": "cd client && npm run start",
     "build": "cd client && npm install && npm run build",
@@ -14,7 +14,6 @@
     "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
   },
   "dependencies": {
-    "@material-ui/icons": "^4.9.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",

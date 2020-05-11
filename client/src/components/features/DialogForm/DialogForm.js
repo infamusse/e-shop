@@ -51,7 +51,7 @@ const DialogForm = ({
           <DialogContentText>
             <ul>
               {products.map((product) => (
-                <li>
+                <li key={product.id}>
                   {product.title} count: {product.count}, price: {product.price}
                 </li>
               ))}
@@ -68,6 +68,7 @@ const DialogForm = ({
               id="name"
               place="Your name"
               label="Name"
+              id="users"
               name="user"
               fullWidth
               onChange={handleEvent}

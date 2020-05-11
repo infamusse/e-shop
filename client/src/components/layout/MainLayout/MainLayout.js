@@ -7,15 +7,19 @@ import { Header } from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { CartIcon } from "../../common/CartIcon/CartIcon";
 import ArrowBack from "../../common/ArrowBack/ArrowBack";
+import Snackbar from "../../features/Snackbar/Snackbar";
 
 import { connect } from "react-redux";
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { getSnackbarStatus } from "../../../redux/snackbarRedux";
 
 import styles from "./MainLayout.module.scss";
 
-const Component = ({ className, children }) => {
+const Component = ({ className, children, snackbar }) => {
+  const { show, text, variant } = snackbar;
+
   return (
     <div className={clsx(className, styles.root)}>
+      <Snackbar showSnackbar={show} text={text} variant={variant} />
       <Header />
       <ArrowBack />
       <CartIcon />
@@ -30,18 +34,18 @@ Component.propTypes = {
   className: PropTypes.string,
 };
 
-// const mapStateToProps = (state) => ({
-//   // someProp: reduxSelector(state),
-// });
+const mapStateToProps = (state) => ({
+  snackbar: getSnackbarStatus(state),
+});
 
 // const mapDispatchToProps = (dispatch) => ({
 //   // someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(mapStateToProps, null)(Component);
 
 export {
-  Component as MainLayout,
-  // Container as MainLayout,
+  // Component as MainLayout,
+  Container as MainLayout,
   Component as MainLayoutComponent,
 };

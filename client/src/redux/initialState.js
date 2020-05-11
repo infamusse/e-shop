@@ -11,4 +11,9 @@ export const initialState = {
     products: [],
     sumPrice: 0,
   },
+  snackbar: {
+    text: "Success",
+    variant: "success",
+    show: false,
+  },
 };
