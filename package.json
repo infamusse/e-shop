@@ -5,10 +5,11 @@
   "author": "mjalowiczor <m.jalowiczor@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "run-p start:*",
+    "start": "nodemon server.js",
+    "start:all": "run-p start:*",
     "start:server": "nodemon server.js",
     "start:client": "cd client && npm run start",
-    "build": "cd client && npm run build",
+    "build": "cd client && npm install && npm run build",
     "test": "mocha tests/API/**/*.test.js",
     "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
   },
