@@ -23,7 +23,7 @@ const ProductView = ({
 }) => {
   useEffect(() => {
     fetchProduct(params.id);
-  }, []);
+  }, [fetchProduct, params]);
 
   if (active || !product) return <LinearProgress className={styles.progress} />;
   else
@@ -53,8 +53,8 @@ const ProductView = ({
             </Grid>
             {product.morePhoto && (
               <Grid className={styles.productGalleryCarts}>
-                {product.morePhoto.map((photo, index) => (
-                  <GalleryCart key={index} src={photo} />
+                {product.morePhoto.map((photo, index, title) => (
+                  <GalleryCart key={index} title={title} src={photo} />
                 ))}
               </Grid>
             )}

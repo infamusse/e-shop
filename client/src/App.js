@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import {
@@ -29,6 +29,7 @@ const theme = createMuiTheme({
   palette: {
     primary: { main: "#c2ffff" },
     secondary: { main: "#324b4b" },
+    success: { main: "#00C598" },
   },
   typography: {
     fontFamily: "Nunito, Arial",

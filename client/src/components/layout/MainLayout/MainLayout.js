@@ -38,14 +38,6 @@ const mapStateToProps = (state) => ({
   snackbar: getSnackbarStatus(state),
 });
 
-// const mapDispatchToProps = (dispatch) => ({
-//   // someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
 const Container = connect(mapStateToProps, null)(Component);
 
-export {
-  // Component as MainLayout,
-  Container as MainLayout,
-  Component as MainLayoutComponent,
-};
+export { Container as MainLayout, Component as MainLayoutComponent };

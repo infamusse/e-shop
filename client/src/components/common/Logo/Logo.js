@@ -6,7 +6,7 @@ import styles from "./Logo.module.scss";
 const Logo = () => {
   const { pathname } = useLocation();
 
-  if (pathname != "/") {
+  if (pathname !== "/") {
     return (
       <Link title="Home" to="/" className={styles.logoContainer}>
         <div className={styles.logoTextContainer}>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 
 import {
   Button,
@@ -22,7 +23,7 @@ const DialogForm = ({
 }) => {
   const [order, createOrder] = useState({});
 
-  const { register, handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
   const onSubmit = () => handleConfirm(order);
 
   const handleEvent = (event) => {
@@ -49,23 +50,22 @@ const DialogForm = ({
         <DialogTitle id="form-dialog-title">Order form</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            <ul>
-              {products.map((product) => (
-                <li key={product.id}>
-                  {product.title} count: {product.count}, price: {product.price}
-                </li>
-              ))}
-            </ul>
+            {products.map(({ id, title, count, price }) => (
+              <p key={id}>
+                {title} quantity: {count}, price: {price}
+              </p>
+            ))}
+            <b>Sum: {sumPrice}$</b>
           </DialogContentText>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               required
               autoFocus
-              className={styles.orderInput}
               autoComplete="off"
+              InputProps={{ inputProps: { minLength: 1, maxLength: 20 } }}
+              className={styles.orderInput}
               margin="dense"
               color="secondary"
-              id="name"
               place="Your name"
               label="Name"
               id="users"
@@ -75,8 +75,11 @@ const DialogForm = ({
             />
             <TextField
               required
-              ref={register({ required: true })}
               className={styles.orderInput}
+              autoComplete="off"
+              InputProps={{
+                inputProps: { min: 10000000, maxLength: 100000000 },
+              }}
               color="secondary"
               placeholder="Your phone number"
               label="Phone"
@@ -86,7 +89,8 @@ const DialogForm = ({
             />
             <TextField
               required
-              ref={register({ required: true })}
+              autoComplete="off"
+              InputProps={{ inputProps: { minLength: 5, maxLength: 30 } }}
               className={styles.orderInput}
               color="secondary"
               label="Adress"
@@ -95,8 +99,9 @@ const DialogForm = ({
               onChange={handleOrderInfo}
             />
             <TextField
-              ref={register({ required: true })}
               className={styles.orderInput}
+              autoComplete="off"
+              InputProps={{ inputProps: { maxLength: 100 } }}
               color="secondary"
               label="Info"
               multiline
@@ -119,6 +124,14 @@ const DialogForm = ({
       </Dialog>
     </div>
   );
+};
+
+DialogForm.propTypes = {
+  open: PropTypes.bool,
+  products: PropTypes.array,
+  handleClose: PropTypes.func,
+  handleConfirm: PropTypes.func,
+  sumPrice: PropTypes.number,
 };
 
 export { DialogForm };

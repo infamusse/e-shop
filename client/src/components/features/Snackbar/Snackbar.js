@@ -21,12 +21,14 @@ const Snackbar = ({ text, showSnackbar, timeout, variant }) => {
     return () => {
       clearTimeout(autoClose);
     };
-  }, [showSnackbar]);
+  }, [showSnackbar, timeout]);
 
   return (
     <div className={styles.root}>
       <Collapse in={show}>
-        <Alert severity={variant}>{text}</Alert>
+        <Alert variant="filled" severity={variant}>
+          {text}
+        </Alert>
       </Collapse>
     </div>
   );
@@ -40,7 +42,7 @@ Snackbar.propTypes = {
 };
 
 Snackbar.defaultProps = {
-  timeout: 3000,
+  timeout: 6000,
 };
 
 export default Snackbar;

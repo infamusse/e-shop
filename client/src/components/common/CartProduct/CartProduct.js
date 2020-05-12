@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { Container, Grid, IconButton } from "@material-ui/core";
+import { Grid, IconButton } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
 import { addProduct, removeProduct } from "../../../redux/orderRedux";
@@ -49,6 +49,7 @@ const CartProductComponent = ({ product, removeProduct }) => {
 
 CartProductComponent.propTypes = {
   product: PropTypes.object,
+  removeProduct: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({

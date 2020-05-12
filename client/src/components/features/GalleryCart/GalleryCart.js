@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 import styles from "./GalleryCart.module.scss";
 
-const GalleryCart = ({ src }) => {
+const GalleryCart = ({ src, title }) => {
   if (src) {
     return (
       <div className={styles.galleryCart}>
-        <img src={src} className={styles.galleryCartPhoto} />
+        <img src={src} alt={title} className={styles.galleryCartPhoto} />
       </div>
     );
   } else return null;
@@ -15,6 +15,7 @@ const GalleryCart = ({ src }) => {
 
 GalleryCart.propTypes = {
   src: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default GalleryCart;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import Fab from "@material-ui/core/Fab";
+import { Fab, Collapse } from "@material-ui/core";
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
 
 import { Cart } from "../../features/Cart/Cart";
@@ -22,7 +22,9 @@ const CartIcon = ({ products }) => {
 
   return (
     <div>
-      {showCart && <Cart />}
+      <Collapse in={showCart}>
+        <Cart />
+      </Collapse>
       <div
         className={clsx(
           styles.CartNotifaction,
@@ -44,6 +46,10 @@ const CartIcon = ({ products }) => {
       </Fab>
     </div>
   );
+};
+
+CartIcon.propTypes = {
+  products: PropTypes.array,
 };
 
 const mapStateToProps = (state) => ({

@@ -11,7 +11,7 @@ const ArrowBack = () => {
 
   const backToHome = () => history.goBack();
 
-  if (pathname != "/") {
+  if (pathname !== "/") {
     return (
       <div
         title="Back"

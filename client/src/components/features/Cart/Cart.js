@@ -26,7 +26,6 @@ const CartComponent = ({ products, sumPrice, sendOrder, snackbarSuccess }) => {
 
   const handleOpenForm = () => {
     setOpenForm(true);
-    snackbarSuccess("Order success");
   };
 
   const handleClose = () => {
@@ -34,7 +33,6 @@ const CartComponent = ({ products, sumPrice, sendOrder, snackbarSuccess }) => {
   };
 
   const handleConfirm = (order) => {
-    console.log("handleConfirm", order);
     handleSendOrder(order);
   };
 
@@ -43,10 +41,12 @@ const CartComponent = ({ products, sumPrice, sendOrder, snackbarSuccess }) => {
       products: products.map(({ id }) => id),
       ...order,
     };
-    sendOrder(sendingOrder).then(() => {
-      handleClose();
-      snackbarSuccess("Order success");
-    });
+    sendOrder(sendingOrder)
+      .then(() => {
+        snackbarSuccess("Order success");
+        handleClose();
+      })
+      .catch((err) => snackbarError(`${err.message.status}`));
   };
 
   return (

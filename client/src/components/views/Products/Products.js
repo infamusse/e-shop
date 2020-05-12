@@ -52,8 +52,4 @@ const mapStateToProps = (state) => ({
 
 const ProductsContainer = connect(mapStateToProps, null)(Products);
 
-export {
-  // Component as Products,
-  ProductsContainer as Products,
-  Products as ProductsComponent,
-};
+export { ProductsContainer as Products, Products as ProductsComponent };
