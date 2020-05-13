@@ -20,8 +20,8 @@ const Component = ({ className, children, snackbar }) => {
 
   return (
     <div className={clsx(className, styles.root)}>
-      <Snackbar showSnackbar={show} text={text} variant={variant} />
       <Header />
+      <Snackbar showSnackbar={show} text={text} variant={variant} />
       <ArrowBack />
       <CartIcon />
       {children}
