@@ -8,6 +8,7 @@ const createActionName = (name) => `app/${reducerName}/${name}`;
 /* action types */
 const SHOW_SNACKBAR_SUCCESS = createActionName("SHOW_SNACKBAR_SUCCESS");
 const SHOW_SNACKBAR_ERROR = createActionName("SHOW_SNACKBAR_ERROR");
+const HIDE_SNACKBAR = createActionName("HIDE_SNACKBAR");
 
 /* action creators */
 export const snackbarSuccess = (payload) => ({
@@ -18,10 +19,10 @@ export const snackbarError = (payload) => ({
   payload,
   type: SHOW_SNACKBAR_ERROR,
 });
+export const hideSnackbar = () => ({ type: HIDE_SNACKBAR });
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
-  console.log("snackbarReducer", action.payload);
   switch (action.type) {
     case SHOW_SNACKBAR_SUCCESS: {
       return {
@@ -35,6 +36,13 @@ export const reducer = (statePart = [], action = {}) => {
         text: action.payload,
         variant: "error",
         show: true,
+      };
+    }
+    case HIDE_SNACKBAR: {
+      return {
+        text: "",
+        variant: "success",
+        show: false,
       };
     }
     default:

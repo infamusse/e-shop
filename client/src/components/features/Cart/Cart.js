@@ -37,11 +37,7 @@ const CartComponent = ({ products, sumPrice, sendOrder, snackbarSuccess }) => {
   };
 
   const handleSendOrder = (order) => {
-    const sendingOrder = {
-      products: products.map(({ id }) => id),
-      ...order,
-    };
-    sendOrder(sendingOrder)
+    sendOrder(order)
       .then(() => {
         snackbarSuccess("Order success");
         handleClose();
@@ -53,7 +49,11 @@ const CartComponent = ({ products, sumPrice, sendOrder, snackbarSuccess }) => {
     <div className={clsx(styles.root)}>
       {products.length ? (
         products.map((product) => (
-          <CartProduct key={product.id} product={product} />
+          <CartProduct
+            key={product.id}
+            product={product}
+            count={product.count}
+          />
         ))
       ) : (
         <p>Cart is empty</p>

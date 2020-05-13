@@ -31,9 +31,6 @@ const theme = createMuiTheme({
     secondary: { main: "#324b4b" },
     success: { main: "#00C598" },
   },
-  typography: {
-    fontFamily: "Nunito, Arial",
-  },
 });
 
 const App = () => (

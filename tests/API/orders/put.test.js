@@ -8,11 +8,11 @@ chai.use(chaiHttp);
 const expext = chai.expect;
 const request = chai.request;
 
-describe("PUT /api/post", () => {
+describe("PUT /api/order/:id", () => {
   beforeEach(async () => {
     const testOrder = new Order({
       _id: "5d9f1140f10a81216cfd4401",
-      products: ["5e9f3b1a9cb4b339d8b99a86"],
+      products: [{ product: "5e9f3b1a9cb4b339d8b99a86", count: 1 }],
       user: "Example user",
       orderInfo: {
         adress: "Downing Str. 10",
@@ -29,7 +29,7 @@ describe("PUT /api/post", () => {
 
   const changedOrder = {
     _id: "5d9f1140f10a81216cfd4401",
-    products: ["5e9f3b1a9cb4b339d8b99a86"],
+    products: [{ product: "5e9f3b1a9cb4b339d8b99a86", count: 1 }],
     user: "Prime minister",
     orderInfo: {
       adress: "Downing Str. 10",

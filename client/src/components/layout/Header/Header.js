@@ -12,8 +12,8 @@ import styles from "./Header.module.scss";
 
 const Header = ({ className, children }) => (
   <div className={clsx(className, styles.root)}>
-    <Logo />
-    <Container>
+    <Logo className={styles.logoLink} />
+    <Container className={styles.linksContainer}>
       <NavLink
         className={clsx(styles.underlineEffect, styles.navLink)}
         color="inherit"

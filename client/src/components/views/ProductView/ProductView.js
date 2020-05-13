@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { Container, LinearProgress, Grid } from "@material-ui/core";
@@ -12,6 +12,7 @@ import {
 
 import GalleryCart from "../../features/GalleryCart/GalleryCart";
 import { AddToCard } from "../../common/AddToCard/AddToCard";
+import DialogGallery from "../../features/DialogGallery/DialogGallery";
 
 import styles from "./ProductView.module.scss";
 
@@ -21,6 +22,10 @@ const ProductView = ({
   match: { params },
   loading: { active, error },
 }) => {
+  const [dialogGallery, openDialogGallery] = useState(false);
+
+  const handleCloseDialogGallery = () => openDialogGallery(false);
+
   useEffect(() => {
     fetchProduct(params.id);
   }, [fetchProduct, params]);
@@ -53,13 +58,23 @@ const ProductView = ({
             </Grid>
             {product.morePhoto && (
               <Grid className={styles.productGalleryCarts}>
-                {product.morePhoto.map((photo, index, title) => (
-                  <GalleryCart key={index} title={title} src={photo} />
+                {product.morePhoto.map((photo, index) => (
+                  <GalleryCart
+                    key={index}
+                    dialogGallery={openDialogGallery}
+                    title={product.title}
+                    src={photo}
+                  />
                 ))}
+                <DialogGallery
+                  open={dialogGallery}
+                  handleClose={handleCloseDialogGallery}
+                  photos={[...product.morePhoto, product.mainPhoto]}
+                />
               </Grid>
             )}
           </Grid>
-          <Grid xs={12} md={2}>
+          <Grid item xs={12} md={2}>
             <AddToCard product={product} />
           </Grid>
           <Grid className={styles.productMainPhotoRow} item xs={12} md={4}>

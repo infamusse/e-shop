@@ -20,7 +20,6 @@ export const clearOrder = (payload) => ({ payload, type: CLEAR_ORDER });
 
 /* thunk creators */
 export const sendOrder = (order) => {
-  console.log("dispatch", order);
   return (dispatch) =>
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/order`, { ...order })
@@ -32,7 +31,6 @@ export const sendOrder = (order) => {
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
-  console.log("REDUCER", action.type, action.payload);
   switch (action.type) {
     case ADD_PRODUCT: {
       const addingPrice =
@@ -46,7 +44,7 @@ export const reducer = (statePart = [], action = {}) => {
         return {
           ...statePart,
           products: [...statePart.products, action.payload],
-          sumPrice: (statePart.sumPrice += addingPrice),
+          sumPrice: Math.round((statePart.sumPrice += addingPrice) * 100) / 100,
         };
       else {
         let addingProduct = product;
@@ -57,7 +55,7 @@ export const reducer = (statePart = [], action = {}) => {
             ...statePart.products.filter(({ id }) => id !== action.payload.id),
             addingProduct,
           ],
-          sumPrice: (statePart.sumPrice += addingPrice),
+          sumPrice: Math.round((statePart.sumPrice += addingPrice) * 100) / 100,
         };
       }
     }
@@ -65,11 +63,13 @@ export const reducer = (statePart = [], action = {}) => {
       const product = statePart.products.find(
         ({ id }) => id === action.payload
       );
-      console.log("product", product);
       return {
         ...statePart,
         products: statePart.products.filter(({ id }) => id !== action.payload),
-        sumPrice: (statePart.sumPrice -= product.price * product.count),
+        sumPrice:
+          Math.round(
+            (statePart.sumPrice -= product.price * product.count) * 100
+          ) / 100,
       };
     }
     case CLEAR_ORDER: {

@@ -10,7 +10,7 @@ const request = chai.request;
 
 describe("POST /api/order", () => {
   const testOrder = {
-    products: ["5e9f3b1a9cb4b339d8b99a86"],
+    products: [{ product: "5e9f3b1a9cb4b339d8b99a86", count: 1 }],
     user: "TEST",
     orderInfo: {
       adress: "Downing Str. 10",

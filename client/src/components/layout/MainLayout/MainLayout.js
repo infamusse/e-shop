@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import clsx from "clsx";
@@ -15,6 +15,7 @@ import { getSnackbarStatus } from "../../../redux/snackbarRedux";
 import styles from "./MainLayout.module.scss";
 
 const Component = ({ className, children, snackbar }) => {
+  useEffect(() => {}, [snackbar]);
   const { show, text, variant } = snackbar;
 
   return (

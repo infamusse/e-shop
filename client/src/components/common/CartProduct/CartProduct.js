@@ -10,11 +10,10 @@ import { addProduct, removeProduct } from "../../../redux/orderRedux";
 
 import styles from "./CartProduct.module.scss";
 
-const CartProductComponent = ({ product, removeProduct }) => {
-  const { title, count, id } = product;
+const CartProductComponent = ({ product, removeProduct, count }) => {
+  const { title, id } = product;
 
   const removeFromCart = (id) => {
-    console.log("removeFromCart");
     removeProduct(id);
   };
 

@@ -12,7 +12,7 @@ describe("GET /api/order", () => {
   beforeEach(async () => {
     const testOrder = new Order({
       _id: "5d9f1140f10a81216cfd4401",
-      products: ["5e9f3b1a9cb4b339d8b99a86"],
+      products: [{ product: "5e9f3b1a9cb4b339d8b99a86", count: 1 }],
       user: "Example user",
       orderInfo: {
         adress: "Downing Str. 10",
@@ -31,6 +31,14 @@ describe("GET /api/order", () => {
     const res = await request(server).get("/api/order");
     expect(res.status).to.be.equal(200);
     expect(res.body).to.be.an("array");
-    console.log(res.body);
+  });
+
+  it("/ should return choosen product by ID", async () => {
+    const res = await request(server).get(
+      "/api/order/5d9f1140f10a81216cfd4401"
+    );
+    expect(res.status).to.be.equal(200);
+    expect(res.body).to.be.an("object");
+    expect(res.body.user).to.be.equal("Example user");
   });
 });

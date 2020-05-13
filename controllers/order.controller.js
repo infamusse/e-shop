@@ -3,7 +3,20 @@ const mongoose = require("mongoose");
 
 exports.getAll = async (req, res) => {
   try {
-    res.json(await Order.find().populate("products", "_id price"));
+    res.json(await Order.find());
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+exports.getOne = async (req, res) => {
+  try {
+    res.json(
+      await Order.findById(req.params.id).populate(
+        "products.product",
+        "_id title price"
+      )
+    );
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -20,7 +33,7 @@ exports.post = async (req, res) => {
 
     const newOrder = new Order({
       _id: new mongoose.Types.ObjectId(),
-      products: products,
+      products: [...products],
       user: user,
       orderInfo: {
         adress: adress,

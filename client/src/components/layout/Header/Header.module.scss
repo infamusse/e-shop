@@ -33,3 +33,17 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 400px) {
+  .logoLink {
+    position: absolute;
+    left: 0;
+  }
+  .linksContainer {
+    padding-left: 120px;
+    .navLink {
+      margin-right: 20px;
+      font-size: 16px;
+    }
+  }
+}

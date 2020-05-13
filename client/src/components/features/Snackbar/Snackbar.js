@@ -5,13 +5,22 @@ import { useState, useEffect } from "react";
 import Alert from "@material-ui/lab/Alert";
 import Collapse from "@material-ui/core/Collapse";
 
+import { hideSnackbar } from "../../../redux/snackbarRedux";
+import { connect } from "react-redux";
+
 import styles from "./Snackbar.module.scss";
 
-const Snackbar = ({ text, showSnackbar, timeout, variant }) => {
+const SnackbarComponent = ({
+  text,
+  showSnackbar,
+  timeout,
+  variant,
+  hideSnackbar,
+}) => {
   const [show, setShow] = useState(false);
 
   const closeSnackbar = () => {
-    setShow(false);
+    hideSnackbar();
   };
 
   useEffect(() => {
@@ -21,7 +30,7 @@ const Snackbar = ({ text, showSnackbar, timeout, variant }) => {
     return () => {
       clearTimeout(autoClose);
     };
-  }, [showSnackbar, timeout]);
+  }, [showSnackbar]);
 
   return (
     <div className={styles.root}>
@@ -34,15 +43,19 @@ const Snackbar = ({ text, showSnackbar, timeout, variant }) => {
   );
 };
 
-Snackbar.propTypes = {
+SnackbarComponent.propTypes = {
   variant: PropTypes.string,
   text: PropTypes.string,
   showSnackbar: PropTypes.bool,
   timeout: PropTypes.number,
 };
 
-Snackbar.defaultProps = {
+SnackbarComponent.defaultProps = {
   timeout: 6000,
 };
+
+const mapDispatchToProps = { hideSnackbar: () => hideSnackbar() };
+
+const Snackbar = connect(null, mapDispatchToProps)(SnackbarComponent);
 
 export default Snackbar;

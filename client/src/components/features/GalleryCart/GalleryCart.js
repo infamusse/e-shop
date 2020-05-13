@@ -3,10 +3,14 @@ import PropTypes from "prop-types";
 
 import styles from "./GalleryCart.module.scss";
 
-const GalleryCart = ({ src, title }) => {
+const GalleryCart = ({ src, title, dialogGallery }) => {
+  const handleOpenDialogGallery = () => {
+    dialogGallery(true);
+  };
+
   if (src) {
     return (
-      <div className={styles.galleryCart}>
+      <div onClick={handleOpenDialogGallery} className={styles.galleryCart}>
         <img src={src} alt={title} className={styles.galleryCartPhoto} />
       </div>
     );
