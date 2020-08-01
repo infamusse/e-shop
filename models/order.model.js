@@ -15,6 +15,7 @@ const orderSchema = new mongoose.Schema({
     phone: { type: Number, required: true },
   },
   message: { type: String },
+  status: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Order", orderSchema);

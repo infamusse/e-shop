@@ -40,6 +40,7 @@ exports.post = async (req, res) => {
         phone: phone,
       },
       message: message,
+      status: "progress",
     });
     await newOrder.save();
     res.status(200).json({ message: "OK" });
@@ -55,6 +56,7 @@ exports.put = async (req, res) => {
       user,
       orderInfo: { adress, phone },
       message,
+      status,
     } = req.body;
 
     const orderToUpdate = await Order.findById(req.params.id);
@@ -63,6 +65,7 @@ exports.put = async (req, res) => {
     orderToUpdate.orderInfo.adress = adress;
     orderToUpdate.orderInfo.phone = phone;
     orderToUpdate.message = message;
+    orderToUpdate.status = status;
 
     await orderToUpdate.save();
 

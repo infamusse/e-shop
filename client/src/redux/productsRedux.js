@@ -14,6 +14,7 @@ const FETCH_START = createActionName("FETCH_START");
 const FETCH_SUCCESS = createActionName("FETCH_SUCCESS");
 const FETCH_SUCCESS_ONE = createActionName("FETCH_SUCCESS_ONE");
 const FETCH_ERROR = createActionName("FETCH_ERROR");
+const SEARCH_PRODUCT = createActionName("SEARCH_PRODUCT");
 
 /* action creators */
 export const fetchStarted = (payload) => ({ payload, type: FETCH_START });
@@ -23,12 +24,12 @@ export const fetchSuccessOneProduct = (payload) => ({
   type: FETCH_SUCCESS_ONE,
 });
 export const fetchError = (payload) => ({ payload, type: FETCH_ERROR });
+export const searchProduct = (payload) => ({ payload, type: SEARCH_PRODUCT });
 
 /* thunk creators */
 export const fetchProductsFromAPI = () => {
   return (dispatch) => {
     dispatch(fetchStarted());
-
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/product`)
       .then((response) => {
@@ -50,6 +51,13 @@ export const fetchOneProductFromAPI = (id) => {
       })
       .catch((error) => fetchError(error.message));
   };
+};
+
+const filterProduct = (products, searchWord) => {
+  const newProducts = products.filter(({ title }) => {
+    return title.toLowerCase().includes(searchWord.toLowerCase());
+  });
+  return newProducts;
 };
 
 /* reducer */
@@ -91,6 +99,12 @@ export const reducer = (statePart = [], action = {}) => {
           active: false,
           error: action.payload,
         },
+      };
+    }
+    case SEARCH_PRODUCT: {
+      return {
+        ...statePart,
+        data: filterProduct(statePart.data, action.payload),
       };
     }
     default:

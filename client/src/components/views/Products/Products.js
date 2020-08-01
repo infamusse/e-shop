@@ -11,6 +11,7 @@ import { getAllProducts, getLoadingState } from "../../../redux/productsRedux";
 import styles from "./Products.module.scss";
 
 import ProductCart from "../../features/ProcuctCart/ProductCart";
+import { ManageProducts } from "../../common/ManageProducts/ManageProducts";
 
 const Products = ({
   className,
@@ -21,8 +22,9 @@ const Products = ({
   return (
     <div className={clsx(className, styles.root)}>
       <Container className={styles.productsContainer}>
-        {active || !products.length ? (
-          <LinearProgress />
+        <ManageProducts />
+        {active || !products ? (
+          <LinearProgress className={styles.loader} />
         ) : (
           products.map((product) => (
             <ProductCart
