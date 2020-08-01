@@ -55,14 +55,6 @@ const DialogForm = ({
     });
   };
 
-  const handleAdditionalInfo = (event) => {
-    const { products } = order;
-    let productToAddMessage = products.find(
-      ({ product }) => product === event.target.name
-    );
-    productToAddMessage.additionalInfo = event.target.value;
-  };
-
   return (
     <div>
       <Dialog
@@ -79,14 +71,6 @@ const DialogForm = ({
               <p>
                 {title} quantity: {count}, price: {price}
               </p>
-              <TextField
-                fullWidth
-                autoComplete="off"
-                color="secondary"
-                name={id}
-                placeholder={`Comment ${title}`}
-                onChange={handleAdditionalInfo}
-              />
             </div>
           ))}
           <p>

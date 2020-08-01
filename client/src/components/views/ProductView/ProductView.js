@@ -47,14 +47,6 @@ const ProductView = ({
                   {product.price}$
                 </p>
               </Grid>
-              <Grid item>
-                <p>
-                  <b>
-                    <i>Cover: </i>
-                  </b>
-                  {product.cover}
-                </p>
-              </Grid>
             </Grid>
             {product.morePhoto && (
               <Grid className={styles.productGalleryCarts}>
