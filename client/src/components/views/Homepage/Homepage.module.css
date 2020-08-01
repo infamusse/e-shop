@@ -1,0 +1,67 @@
+.root {
+  margin-bottom: 50px;
+  height: 100%;
+}
+
+.homePageContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.homePageMainTextContainer {
+  max-width: 400px;
+  z-index: -1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.homePageMainTextContainer .homePageMainText {
+  font-family: "BioRhyme", serif;
+  font-size: 54px;
+}
+
+.homePageMainPhoto {
+  width: 400px;
+  height: 600px;
+  -webkit-transform: translateX(-20%);
+          transform: translateX(-20%);
+  background-position: center;
+  background-size: cover;
+  background-origin: content-box;
+  background-image: url("https://images.pexels.com/photos/1181672/pexels-photo-1181672.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+}
+
+@media (max-width: 1000px) {
+  .homePageContainer {
+    min-height: 80vh;
+    padding-bottom: 30px;
+  }
+  .homePageMainTextContainer {
+    max-width: 300px;
+    -webkit-transform: translateY(-10%);
+            transform: translateY(-10%);
+  }
+  .homePageMainPhoto {
+    width: 300px;
+    height: 500px;
+    -webkit-transform: translate(-10%, 40%);
+            transform: translate(-10%, 40%);
+  }
+}
+
+@media (max-width: 600px) {
+  .homePageMainTextContainer {
+    max-width: 80%;
+  }
+  .homePageMainPhoto {
+    display: none;
+  }
+}
+/*# sourceMappingURL=Homepage.module.css.map */

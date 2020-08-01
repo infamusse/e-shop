@@ -1,0 +1,56 @@
+.root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  height: 100px;
+  width: 100vw;
+}
+
+.navLink {
+  text-decoration: none;
+  color: black;
+  width: 100px;
+  margin-right: 40px;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
+
+.underlineEffect {
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  -webkit-transition: background-size 0.25s ease-in;
+  transition: background-size 0.25s ease-in;
+}
+
+.underlineEffect:hover {
+  background-size: 100% 88%;
+}
+
+@media (max-width: 800px) {
+  .root {
+    height: 50px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .logoLink {
+    position: absolute;
+    left: 0;
+  }
+  .linksContainer {
+    padding-left: 120px;
+  }
+  .linksContainer .navLink {
+    margin-right: 20px;
+    font-size: 16px;
+  }
+}
+/*# sourceMappingURL=Header.module.css.map */

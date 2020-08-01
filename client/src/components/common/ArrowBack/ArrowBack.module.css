@@ -1,0 +1,49 @@
+.arrowBackContainer {
+  position: fixed;
+  left: 80px;
+  top: 150px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.arrowBackContainer * {
+  font-size: 60px;
+}
+
+.arrowBackFront,
+.arrowBackBehind {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.arrowBackFront {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translate(-10%, -8%);
+          transform: translate(-10%, -8%);
+  color: #84fab0;
+}
+
+.arrowBackBehind {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translate(10%, 8%);
+          transform: translate(10%, 8%);
+  color: #8fd3f4;
+}
+
+.arrowBackContainer:hover .arrowBackFront,
+.arrowBackContainer:hover .arrowBackBehind {
+  -webkit-transform: none;
+          transform: none;
+  color: #c2ffff;
+}
+
+@media (max-width: 1000px) {
+  .arrowBackContainer {
+    left: 30px;
+  }
+}
+/*# sourceMappingURL=ArrowBack.module.css.map */

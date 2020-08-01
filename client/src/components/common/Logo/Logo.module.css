@@ -1,0 +1,58 @@
+.logoContainer {
+  display: block;
+  height: 100%;
+  width: 150px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.logoContainer .logoTextContainer {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.logoContainer .logoTextContainer * {
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+.logoContainer .logoTextContainer .logoFirstLine,
+.logoContainer .logoTextContainer .logoSecondLine {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.logoContainer .logoTextContainer .logoFirstLine {
+  -webkit-transform: translateX(-8%);
+          transform: translateX(-8%);
+  color: #84fab0;
+}
+
+.logoContainer .logoTextContainer .logoSecondLine {
+  -webkit-transform: translateX(8%);
+          transform: translateX(8%);
+  color: #8fd3f4;
+}
+
+.logoContainer .logoTextContainer:hover .logoFirstLine,
+.logoContainer .logoTextContainer:hover .logoSecondLine {
+  -webkit-transform: none;
+          transform: none;
+  color: #c2ffff;
+}
+
+@media (max-width: 400px) {
+  .logoContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 80px;
+  }
+}
+/*# sourceMappingURL=Logo.module.css.map */

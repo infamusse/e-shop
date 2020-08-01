@@ -1,0 +1,32 @@
+.orderInput {
+  margin: 10px;
+}
+
+.DialogContent {
+  padding: 50px 100px;
+}
+
+.actionRow {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
+}
+
+.sumPrice {
+  margin-top: 20px;
+}
+
+.orderForm {
+  margin-top: 50px;
+}
+
+@media (max-width: 500px) {
+  .DialogContent {
+    padding: 10px 5px;
+  }
+  .orderForm {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=DialogForm.module.css.map */

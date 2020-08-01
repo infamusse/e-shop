@@ -1,0 +1,29 @@
+.footer {
+  background-color: #c2ffff;
+  height: 50px;
+  width: 100vw;
+  bottom: 0;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  max-width: 100vw !important;
+}
+
+.footerTextLink {
+  margin-right: 10px;
+}
+
+.footerTextLink a {
+  color: #364549;
+  font-family: "Poppins";
+  text-decoration: none;
+}
+
+.footerTextLink a:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=Footer.module.css.map */

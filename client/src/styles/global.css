@@ -1,0 +1,22 @@
+body {
+  font-family: "Nunito", sans-serif;
+  position: relative;
+  height: 100%;
+}
+
+.switchWrapper {
+  position: relative;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  height: 100%;
+}
+
+.switchWrapper > :first-child ~ * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+/*# sourceMappingURL=global.css.map */

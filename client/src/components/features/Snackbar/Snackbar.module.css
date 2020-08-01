@@ -1,0 +1,10 @@
+.root {
+  position: fixed;
+  left: 50%;
+  top: 50px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 99;
+  min-width: 300px;
+}
+/*# sourceMappingURL=Snackbar.module.css.map */
